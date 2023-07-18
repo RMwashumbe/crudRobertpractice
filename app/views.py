@@ -26,3 +26,14 @@ def people(request):
 
     context = {"data": d}
     return render(request, 'people.html', context)
+
+
+def delete(request, id):
+    dd = People.objects.get(id=id)
+    dd.delete()
+    return render(request, 'Delete Successful')
+
+
+def update(request, id):
+    l = People.objects.get(id=id)
+    return render(request, 'edit.html', {"l":l})
